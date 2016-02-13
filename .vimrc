@@ -19,6 +19,7 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
 NeoBundle 'Shougo/neocomplcache'
+NeoBundle 'Shougo/unite-outline'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'tomasr/molokai'
@@ -46,6 +47,9 @@ let g:vimfiler_as_default_explorer = 1
 noremap <silent> :tree :VimFiler -split -simple -winwidth=45 -no-quit
 noremap ff :VimFiler -split -simple -winwidth=45 -no-quit<ENTER>
 autocmd FileType vimfiler nmap <buffer> <CR> <Plug>(vimfiler_expand_or_edit)
+
+"######## Unite-outline ########
+noremap sc :Unite -vertical -winwidth=60 outline<ENTER>
 
 "######## molokai ########
 colorscheme molokai
