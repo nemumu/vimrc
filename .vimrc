@@ -2,13 +2,13 @@
 "         NeoBundle関連
 "==================================
 if has('vim_starting')
-	if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
-		echo "install neobundle..."
-		" vim からコマンド呼び出しているだけ neobundle.vim のクローン
-		:call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
-	endif
-	" 初回起動時のみruntimepathにneobundleのパスを指定する
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
+    if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
+        echo "install neobundle..."
+        " vim からコマンド呼び出しているだけ neobundle.vim のクローン
+        :call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
+    endif
+    " 初回起動時のみruntimepathにneobundleのパスを指定する
+    set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 " NeoBundleを初期化
@@ -18,10 +18,11 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'Shougo/unite-outline'
+NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'tomasr/molokai'
 
 call neobundle#end()
@@ -51,13 +52,6 @@ autocmd FileType vimfiler nmap <buffer> <CR> <Plug>(vimfiler_expand_or_edit)
 "######## Unite-outline ########
 noremap sc :Unite -vertical -winwidth=60 outline<ENTER>
 
-"######## molokai ########
-colorscheme molokai
-syntax on
-let g:molokai_original = 1
-let g:rehash256 = 1
-set background=dark
-
 "##### neocomplcache #####
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
@@ -70,8 +64,8 @@ let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 let g:neocomplcache_dictionary_filetype_lists = {
-	\ 'default' : ''
-	\ }
+    \ 'default' : ''
+    \ }
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplcache#undo_completion()
@@ -81,7 +75,7 @@ inoremap <expr><C-l>     neocomplcache#complete_common_string()
 " <CR>: close popup and save indent.
 inoremap <silent> <CR> <C-r>=<SID>cr_func()<CR>
 function! s:cr_func()
-	return neocomplcache#smart_close_popup() . "\<CR>"
+    return neocomplcache#smart_close_popup() . "\<CR>"
 endfunction
 
 " <TAB>: completion.
@@ -92,13 +86,36 @@ inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
+
+"######## vim-indent-guides ########
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_auto_colors=0
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=237
+let g:indent_guides_color_change_percent = 50
+let g:indent_guides_start_level = 2
+let g:indent_guides_guide_size = 1
+
+"######## molokai ########
+colorscheme molokai
+syntax on
+let g:molokai_original = 1
+let g:rehash256 = 1
+set background=dark
+
+
+
 "==================================
 "        インデント関連
 "==================================
 " タブは4つ分のスペース
 set tabstop=4
 set shiftwidth=4
-set softtabstop=4
+set softtabstop=0
+
+"Tabを半角スペースにする
+set smarttab
+set expandtab
 
 " 改行時にインデントを継続
 set autoindent
@@ -118,10 +135,6 @@ set wrapscan
 
 "入力途中にリアルタイム検索
 set incsearch
-
-
-
-
 
 "##############その他############
 "行番号を表示
@@ -219,6 +232,6 @@ nmap い i
 "             Script
 "==================================
 augroup backLine
-	au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
-	\ exe "normal g`\"" | endif
+    au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+    \ exe "normal g`\"" | endif
 augroup END
