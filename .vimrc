@@ -231,7 +231,23 @@ nmap い i
 "==================================
 "             Script
 "==================================
+"最後に閉じた位置のカーソル位置で表示
 augroup backLine
     au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
     \ exe "normal g`\"" | endif
 augroup END
+
+"全角スペースをハイライトする
+function! ZenkakuSpace()
+    highlight ZenkakuSpace cterm=underline ctermfg=lightred gui=underline guifg=lightred
+endfunction
+if has('syntax')
+    augroup ZenkakuSpace
+        autocmd!
+        " ZenkakuSpaceをカラーファイルで設定するなら次の行は削除
+        autocmd ColorScheme       * call ZenkakuSpace()
+        autocmd VimEnter,WinEnter * match ZenkakuSpace /　/
+        autocmd VimEnter,WinEnter * match ZenkakuSpace '\%u3000'
+    augroup END
+    call ZenkakuSpace()
+endif
