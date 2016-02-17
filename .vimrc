@@ -23,6 +23,7 @@ NeoBundle 'Shougo/neocomplcache'
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'nathanaelkane/vim-indent-guides'
+NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tomasr/molokai'
 
 call neobundle#end()
@@ -251,3 +252,5 @@ if has('syntax')
     augroup END
     call ZenkakuSpace()
 endif
+
+
