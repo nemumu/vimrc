@@ -104,8 +104,6 @@ let g:molokai_original = 1
 let g:rehash256 = 1
 set background=dark
 
-
-
 "==================================
 "        インデント関連
 "==================================
@@ -228,6 +226,9 @@ nnoremap sz : sh<Enter>
 "全角で'あ' や 'い'を入力しても挿入モードにする
 nmap あ a
 nmap い i
+
+"w!!で権限昇格して保存
+cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
 
 "==================================
 "             Script
