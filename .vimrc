@@ -1,3 +1,5 @@
+scriptencoding utf-8
+
 "==================================
 "         NeoBundle関連
 "==================================
@@ -230,6 +232,9 @@ nmap い i
 "w!!で権限昇格して保存
 cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
 
+"swapファイルを作らない
+set noswapfile
+
 "==================================
 "             Script
 "==================================
@@ -253,5 +258,3 @@ if has('syntax')
     augroup END
     call ZenkakuSpace()
 endif
-
-
