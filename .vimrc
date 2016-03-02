@@ -148,7 +148,9 @@ set showmatch
 set laststatus=2
 
 
-"###########キー設定関連###########
+"==================================
+"        キー設定関連
+"==================================
 "s.に意味を持たせる
 nnoremap s <Nop>
 
@@ -210,17 +212,11 @@ noremap <C-d> <C-b>
 "Ctrl+BをCtrl+Dに割り当て
 noremap <C-b> <C-d>
 
-"==================================
-"            その他
-"==================================
-"セーブする
-nnoremap sw : <C-u>w<CR>
-
 " ESCでハイライトをクリアにする
 nnoremap <silent> <ESC><ESC> :noh<C-L><CR>
 
-" エンコーディングをUTF8に設定
-set encoding=utf-8
+"セーブする
+nnoremap sw : <C-u>w<CR>
 
 "szでシェルを起動
 nnoremap sz : sh<Enter>
@@ -232,8 +228,17 @@ nmap い i
 "w!!で権限昇格して保存
 cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
 
+"==================================
+"            その他
+"==================================
+" エンコーディングをUTF8に設定
+set encoding=utf-8
+
 "swapファイルを作らない
 set noswapfile
+
+".nse(Nmap Scripting Engine)をluaとして認識させる
+au BufNewFile,BufRead *.nse setf lua
 
 "==================================
 "             Script
