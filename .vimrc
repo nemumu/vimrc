@@ -27,6 +27,7 @@ NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'nathanaelkane/vim-indent-guides'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tomasr/molokai'
+NeoBundle 'elzr/vim-json'
 
 call neobundle#end()
 
@@ -105,6 +106,9 @@ syntax on
 let g:molokai_original = 1
 let g:rehash256 = 1
 set background=dark
+
+"######## vim-json ########
+let g:vim_json_syntax_conceal = 0
 
 "==================================
 "        インデント関連
