@@ -91,6 +91,28 @@ inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
 
+"######## lightline ########
+set noshowmode
+let g:lightline = {
+    \ 'active': {
+    \   'left': [ ['mode', 'paste'], ['fugitive', 'filename']]
+    \ },
+    \ 'component_function': {
+    \    'fugitive': 'MyFugitive'
+    \}
+\}
+
+function! MyFugitive()
+    try
+        if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head') && strlen(fugitive#head())
+            return '[' . fugitive#head() . ']'
+        endif
+    catch
+    endtry
+        return ''
+endfunction
+
+
 "######## vim-indent-guides ########
 let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_auto_colors=0
