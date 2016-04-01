@@ -99,7 +99,8 @@ let g:lightline = {
     \   'left': [ ['mode', 'paste'], ['fugitive', 'filename']]
     \ },
     \ 'component_function': {
-    \    'fugitive': 'MyFugitive'
+    \    'fugitive' : 'MyFugitive',
+    \    'filename' : 'MyFileName',
     \}
 \}
 
@@ -113,6 +114,22 @@ function! MyFugitive()
         return ''
 endfunction
 
+function! MyModified()
+   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyReadonly()
+    return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? '\(x_x)/' : ''
+endfunction
+
+function! MyFileName()
+    return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
 
 "######## vim-indent-guides ########
 let g:indent_guides_enable_on_vim_startup=1
