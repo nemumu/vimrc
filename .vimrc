@@ -29,6 +29,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'LeafCage/yankround.vim'
+NeoBundle 'mattn/emmet-vim'
 
 call neobundle#end()
 
