@@ -58,13 +58,16 @@ autocmd FileType vimfiler nmap <buffer> <CR> <Plug>(vimfiler_expand_or_edit)
 "######## Unite-outline ########
 noremap sc :Unite -vertical -winwidth=60 outline<ENTER>
 
-"##### neocomplcache #####
+"######## neocomplcache ########
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
+
 " Use neocomplcache.
 let g:neocomplcache_enable_at_startup = 1
+
 " Use smartcase.
 let g:neocomplcache_enable_smart_case = 1
+
 " Set minimum syntax keyword length.
 let g:neocomplcache_min_syntax_length = 3
 let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
@@ -84,14 +87,17 @@ function! s:cr_func()
     return neocomplcache#smart_close_popup() . "\<CR>"
 endfunction
 
-" <TAB>: completion.
+" <TAB>: select other words.
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+
 " <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 inoremap <expr><C-y>  neocomplcache#close_popup()
 inoremap <expr><C-e>  neocomplcache#cancel_popup()
 
+" <ENTER>; select words and close popup.
+inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
 
 "######## lightline ########
 set noshowmode
