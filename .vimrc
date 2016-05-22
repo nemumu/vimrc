@@ -296,8 +296,11 @@ cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
 "==================================
 "            その他
 "==================================
-" エンコーディングをUTF8に設定
+" 内部エンコーディング
 set encoding=utf-8
+
+" ファイル書き込み時のエンコーディング
+set fileencoding=utf-8
 
 "swapファイルを作らない
 set noswapfile
