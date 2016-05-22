@@ -52,7 +52,7 @@ nnoremap fm :<C-u>Unite file_mru buffer<CR>
 " VimFIlerを標準ファイラにする
 let g:vimfiler_as_default_explorer = 1
 noremap <silent> :tree :VimFiler -split -simple -winwidth=45 -no-quit
-noremap ff :VimFiler -split -simple -winwidth=45 -no-quit<ENTER>
+noremap ff :VimFiler -split -simple -winwidth=30 -no-quit<ENTER>
 autocmd FileType vimfiler nmap <buffer> <CR> <Plug>(vimfiler_expand_or_edit)
 
 "######## Unite-outline ########
