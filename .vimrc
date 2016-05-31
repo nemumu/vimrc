@@ -15,7 +15,7 @@ endif
 
 " NeoBundleを初期化
 call neobundle#begin(expand('~/.vim/bundle/'))
-"NeoBundleをNeoBundleで管理
+" NeoBundleをNeoBundleで管理
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/unite.vim'
@@ -43,7 +43,7 @@ NeoBundleCheck
 let gjunite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
-"nnoremap fy :<C-u>Unite history/yank<CR>
+" nnoremap fy :<C-u>Unite history/yank<CR>
 nnoremap fb :<C-u>Unite buffer<CR>
 nnoremap fr :<C-u>Unite -buffer-name=register register<CR>
 nnoremap fm :<C-u>Unite file_mru buffer<CR>
@@ -177,7 +177,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=0
 
-"Tabを半角スペースにする
+" Tabを半角スペースにする
 set smarttab
 set expandtab
 
@@ -188,109 +188,96 @@ set autoindent
 filetype plugin indent on
 
 "#############検索関連#############
-"大文字小文字を区別なく検索
+" 大文字小文字を区別なく検索
 set ignorecase
 
-"検索文字列に大文字が含まれている場合は区別
+" 検索文字列に大文字が含まれている場合は区別
 set smartcase
 
-"最後まで検索すると最初に戻る
+" 最後まで検索すると最初に戻る
 set wrapscan
 
-"入力途中にリアルタイム検索
+" 入力途中にリアルタイム検索
 set incsearch
-
-"##############その他############
-"行番号を表示
-set number
-
-"対応する括弧を強調
-set showmatch
-
-"ステータスラインを常に表示
-set laststatus=2
-
-"タイトルバーにファイル名とパスを表示
-set title
 
 "==================================
 "        キー設定関連
 "==================================
-"s.に意味を持たせる
+" s.に意味を持たせる
 nnoremap s <Nop>
 
 "#############タブ関連#############
-"次のタブに移動
+" 次のタブに移動
 nnoremap sn gt
 
-"前のタブに移動
+" 前のタブに移動
 nnoremap sp gT
 
-"新規タブ作成
+" 新規タブ作成
 nnoremap st : <C-u>tabnew<CR>
 
-"新規タブ作成
+" 新規タブ作成
 nnoremap ts : <C-u>tabnew<CR>
 
 "##########ウィンドウ関連##########
-"ウィンドウを横に分割
+" ウィンドウを横に分割
 nnoremap ss : <C-u>sp<CR>
 
-"ウィンドウを縦に分割
+" ウィンドウを縦に分割
 nnoremap sv : <C-u>vs<CR>
 
-"下ウィンドウに移動
+" 下ウィンドウに移動
 nnoremap sJ : <C-w>J
 
-"上ウィンドウに移動
+" 上ウィンドウに移動
 nnoremap sK : <C-w>K
 
-"右ウィンドウに移動
+" 右ウィンドウに移動
 nnoremap sL : <C-w>L
 
-"左ウィンドウに移動
+" 左ウィンドウに移動
 nnoremap sH : <C-w>H
 
-"ウィンドウを閉じる
+" ウィンドウを閉じる
 nnoremap sq :  <C-u>q<CR>
 
 "####### ESCキーの割り当て ########
-"Ctrl+hでESCキーに変更
+" Ctrl+hでESCキーに変更
 imap <C-h> <esc>
 
-"Ctrl+jでESCキーに変更
+" Ctrl+jでESCキーに変更
 imap <C-j> <esc>
 
-"Ctrl+kでESCキーに変更
+" Ctrl+kでESCキーに変更
 imap <C-k> <esc>
 
-"Ctrl+lでESCキーに変更
+" Ctrl+lでESCキーに変更
 imap <C-l>  <esc>
 
-"jjをESCキーに変換
+" jjをESCキーに変換
 imap jj <ESC>
 
 "###### Ctrl+dとCtrl+bを交換 ######
-"Ctrl+DをCtrl+Bに割り当て
+" Ctrl+DをCtrl+Bに割り当て
 noremap <C-d> <C-b>
 
-"Ctrl+BをCtrl+Dに割り当て
+" Ctrl+BをCtrl+Dに割り当て
 noremap <C-b> <C-d>
 
 " ESCでハイライトをクリアにする
 nnoremap <silent> <ESC><ESC> :noh<C-L><CR>
 
-"セーブする
+" セーブする
 nnoremap sw : <C-u>w<CR>
 
-"szでシェルを起動
+" szでシェルを起動
 nnoremap sz : sh<Enter>
 
-"全角で'あ' や 'い'を入力しても挿入モードにする
+" 全角で'あ' や 'い'を入力しても挿入モードにする
 nmap あ a
 nmap い i
 
-"w!!で権限昇格して保存
+" w!!で権限昇格して保存
 cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
 
 "==================================
@@ -302,11 +289,23 @@ set encoding=utf-8
 " ファイル書き込み時のエンコーディング
 set fileencoding=utf-8
 
-"swapファイルを作らない
+" swapファイルを作らない
 set noswapfile
 
-".nse(Nmap Scripting Engine)をluaとして認識させる
+" .nse(Nmap Scripting Engine)をluaとして認識させる
 au BufNewFile,BufRead *.nse setf lua
+
+" 行番号を表示
+set number
+
+" 対応する括弧を強調
+set showmatch
+
+" ステータスラインを常に表示
+set laststatus=2
+
+" タイトルバーにファイル名とパスを表示
+set title
 
 "==================================
 "         折りたたみ関連
@@ -322,13 +321,13 @@ set modelines=3
 "==================================
 "             Script
 "==================================
-"最後に閉じた位置のカーソル位置で表示
+" 最後に閉じた位置のカーソル位置で表示
 augroup backLine
     au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
     \ exe "normal g`\"" | endif
 augroup END
 
-"全角スペースをハイライトする
+" 全角スペースをハイライトする
 function! ZenkakuSpace()
     highlight ZenkakuSpace cterm=underline ctermfg=lightred gui=underline guifg=lightred
 endfunction
