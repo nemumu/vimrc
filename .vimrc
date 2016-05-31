@@ -241,7 +241,7 @@ nnoremap sH : <C-w>H
 " ウィンドウを閉じる
 nnoremap sq :  <C-u>q<CR>
 
-"####### ESCキーの割り当て ########
+"####### ESCキーに割り当て ########
 " Ctrl+hでESCキーに変更
 imap <C-h> <esc>
 
@@ -257,13 +257,17 @@ imap <C-l>  <esc>
 " jjをESCキーに変換
 imap jj <ESC>
 
-"###### Ctrl+dとCtrl+bを交換 ######
-" Ctrl+DをCtrl+Bに割り当て
-noremap <C-d> <C-b>
+"####### キー移動割り当て ########
+" Ctrl+nで半画面分下へ移動
+noremap <C-n> <C-d>
 
-" Ctrl+BをCtrl+Dに割り当て
+" Ctrl+dとCtrl+bを交換
+" (Ctrl+dで反画面上へ移動)
+" (Ctrl+bで反画面下へ移動)
+noremap <C-d> <C-b>
 noremap <C-b> <C-d>
 
+"####### その他キー設定 ########
 " ESCでハイライトをクリアにする
 nnoremap <silent> <ESC><ESC> :noh<C-L><CR>
 
@@ -281,7 +285,7 @@ nmap い i
 cnoremap w!! w !sudo tee > /dev/null %<CR> :e!<CR>
 
 "==================================
-"            その他
+"          その他設定
 "==================================
 " 内部エンコーディング
 set encoding=utf-8
