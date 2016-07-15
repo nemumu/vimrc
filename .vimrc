@@ -293,6 +293,9 @@ set encoding=utf-8
 " ファイル書き込み時のエンコーディング
 set fileencoding=utf-8
 
+" ファイル保存時にバックアップファイルを作成しない
+set nobackup
+
 " swapファイルを作らない
 set noswapfile
 
