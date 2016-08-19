@@ -30,6 +30,7 @@ NeoBundle 'tomasr/molokai'
 NeoBundle 'elzr/vim-json'
 NeoBundle 'LeafCage/yankround.vim'
 NeoBundle 'mattn/emmet-vim'
+NeoBundle 'vim-scripts/grep.vim'
 
 call neobundle#end()
 
@@ -168,6 +169,18 @@ nmap <C-p> <Plug>(yankround-prev)
 nmap <C-n> <Plug>(yankround-next)
 
 nnoremap sy :<C-u>Unite yankround<CR>
+
+"######## grep.vim ########
+nnoremap <expr> gr ':Rgrep<CR>'
+
+" 検索で無視するディレクトリ
+let Grep_Skip_Dirs = '.svn .git'
+
+" バイナリファイルを検索対象から外す
+let Grep_Default_Options = '-I'
+
+" バックアップファイルを検索対象から外す
+let Grep_Skip_Files = '*.bak *~'
 
 "==================================
 "        インデント関連
