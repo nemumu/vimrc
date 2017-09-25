@@ -26,7 +26,7 @@ if dein#load_state(s:dein_dir)
     call dein#add('scrooloose/syntastic')
     call dein#add('nemumu/molokai')
     call dein#add('nemumu/vim-json')
-    call dein#add('LeafCage/yankround.vim')
+    call dein#add('Shougo/neoyank.vim')
     call dein#add('mattn/emmet-vim')
     call dein#add('vim-scripts/grep.vim')
     call dein#end()
@@ -158,18 +158,6 @@ set background=dark
 
 "######## vim-json ########
 let g:vim_json_syntax_conceal = 0
-
-"######## yankround.vim ########
-nmap p <Plug>(yankround-p)
-xmap p <Plug>(yankround-p)
-nmap P <Plug>(yankround-P)
-nmap gp <Plug>(yankround-gp)
-xmap gp <Plug>(yankround-gp)
-nmap gP <Plug>(yankround-gP)
-nmap <C-p> <Plug>(yankround-prev)
-nmap <C-n> <Plug>(yankround-next)
-
-nnoremap sy :<C-u>Unite yankround<CR>
 
 "######## grep.vim ########
 nnoremap <expr> gr ':Rgrep<CR>'
