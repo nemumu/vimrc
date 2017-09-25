@@ -1,45 +1,46 @@
 scriptencoding utf-8
 
 "==================================
-"         NeoBundle関連
+"         dein.vim関連
 "==================================
-if has('vim_starting')
-    if !isdirectory(expand("~/.vim/bundle/neobundle.vim/"))
-        echo "install neobundle..."
-        " vim からコマンド呼び出しているだけ neobundle.vim のクローン
-        :call system("git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim")
-    endif
-    " 初回起動時のみruntimepathにneobundleのパスを指定する
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+" Install dein.vim if not installed
+let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
+let s:dein_dir = s:cache_home . '/dein'
+let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
+if !isdirectory(s:dein_repo_dir)
+    call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
+endif
+let &runtimepath = s:dein_repo_dir .",". &runtimepath
+
+" Load plugins
+let s:toml_file = fnamemodify(expand('<sfile>'), ':h').'/dein.toml'
+if dein#load_state(s:dein_dir)
+    call dein#begin(s:dein_dir)
+    call dein#add('Shougo/unite.vim')
+    call dein#add('Shougo/vimfiler')
+    call dein#add('Shougo/unite-outline')
+    call dein#add('Shougo/neocomplcache')
+    call dein#add('itchyny/lightline.vim')
+    call dein#add('tpope/vim-fugitive')
+    call dein#add('nathanaelkane/vim-indent-guides')
+    call dein#add('scrooloose/syntastic')
+    call dein#add('tomasr/molokai')
+    call dein#add('elzr/vim-json')
+    call dein#add('LeafCage/yankround.vim')
+    call dein#add('mattn/emmet-vim')
+    call dein#add('vim-scripts/grep.vim')
+    call dein#end()
+    call dein#save_state()
 endif
 
-" NeoBundleを初期化
-call neobundle#begin(expand('~/.vim/bundle/'))
-" NeoBundleをNeoBundleで管理
-NeoBundleFetch 'Shougo/neobundle.vim'
-
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimfiler'
-NeoBundle 'Shougo/unite-outline'
-NeoBundle 'Shougo/neocomplcache'
-NeoBundle 'itchyny/lightline.vim'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'nathanaelkane/vim-indent-guides'
-NeoBundle 'scrooloose/syntastic'
-NeoBundle 'tomasr/molokai'
-NeoBundle 'elzr/vim-json'
-NeoBundle 'LeafCage/yankround.vim'
-NeoBundle 'mattn/emmet-vim'
-NeoBundle 'vim-scripts/grep.vim'
-
-call neobundle#end()
+" Install other plugins if not installed
+if has('vim_starting') && dein#check_install()
+    call dein#install()
+endif
 
 "==================================
 "         プラグイン関連
 "==================================
-" プラグインが無い場合はダウンロードしてくる
-NeoBundleCheck
-
 " Unite.vimの設定
 let gjunite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
