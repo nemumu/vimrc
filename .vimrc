@@ -8,7 +8,7 @@ let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
 let s:dein_dir = s:cache_home . '/dein'
 let s:dein_repo_dir = s:dein_dir . '/repos/github.com/Shougo/dein.vim'
 if !isdirectory(s:dein_repo_dir)
-    call system('git clone -b 1.5 https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
+    call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
 endif
 let &runtimepath = s:dein_repo_dir .",". &runtimepath
 
@@ -24,7 +24,7 @@ if dein#load_state(s:dein_dir)
     call dein#add('tpope/vim-fugitive')
     call dein#add('nathanaelkane/vim-indent-guides')
     call dein#add('scrooloose/syntastic')
-    call dein#add('nemumu/molokai')
+    call dein#add('joshdick/onedark.vim')
     call dein#add('nemumu/vim-json')
     call dein#add('Shougo/neoyank.vim')
     call dein#add('mattn/emmet-vim')
@@ -104,6 +104,7 @@ inoremap <expr><CR>  pumvisible() ? neocomplcache#close_popup() : "<CR>"
 "######## lightline ########
 set noshowmode
 let g:lightline = {
+    \ 'colorscheme': 'onedark',
     \ 'active': {
     \   'left': [ ['mode', 'paste'], ['fugitive', 'filename']]
     \ },
@@ -150,11 +151,8 @@ let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
 "######## molokai ########
-colorscheme molokai
+colorscheme onedark
 syntax on
-let g:molokai_original = 1
-let g:rehash256 = 1
-set background=dark
 
 "######## vim-json ########
 let g:vim_json_syntax_conceal = 0
