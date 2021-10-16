@@ -1,7 +1,7 @@
 scriptencoding utf-8
 
 "==================================
-"         dein.vim関連
+" Install dein.vim
 "==================================
 " Install dein.vim if not installed
 let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
@@ -11,9 +11,12 @@ if !isdirectory(s:dein_repo_dir)
     call system('git clone https://github.com/Shougo/dein.vim ' . shellescape(s:dein_repo_dir))
 endif
 let &runtimepath = s:dein_repo_dir .",". &runtimepath
-
-" Load plugins
 let s:toml_file = fnamemodify(expand('<sfile>'), ':h').'/dein.toml'
+
+"==================================
+" Load plugins
+"==================================
+" Load plugins
 if dein#load_state(s:dein_dir)
     call dein#begin(s:dein_dir)
     call dein#add('Shougo/unite.vim')
@@ -33,15 +36,15 @@ if dein#load_state(s:dein_dir)
     call dein#save_state()
 endif
 
-" Install other plugins if not installed
+" Install plugins if not installed
 if has('vim_starting') && dein#check_install()
     call dein#install()
 endif
 
 "==================================
-"         プラグイン関連
+" Plugin settings
 "==================================
-" Unite.vimの設定
+" Unite.vim
 let gjunite_enable_start_insert=1
 let g:unite_source_history_yank_enable =1
 let g:unite_source_file_mru_limit = 200
@@ -51,7 +54,6 @@ nnoremap fr :<C-u>Unite -buffer-name=register register<CR>
 nnoremap fm :<C-u>Unite file_mru buffer<CR>
 
 "######## VimFiler ########
-" VimFIlerを標準ファイラにする
 let g:vimfiler_as_default_explorer = 1
 noremap <silent> :tree :VimFiler -split -simple -winwidth=45 -no-quit
 noremap ff :VimFiler -split -simple -winwidth=30 -no-quit<ENTER>
@@ -150,7 +152,7 @@ let g:indent_guides_color_change_percent = 50
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
-"######## molokai ########
+"######## Load onedark theme ########
 colorscheme onedark
 syntax on
 
@@ -168,6 +170,10 @@ let Grep_Default_Options = '-I'
 
 " バックアップファイルを検索対象から外す
 let Grep_Skip_Files = '*.bak *~'
+
+"######## syntastic ########
+let g:syntastic_python_checkers = ["flake8"]
+let g:syntastic_python_pylint_post_args="--max-line-length=100"
 
 "==================================
 "        インデント関連
