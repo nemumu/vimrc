@@ -14,5 +14,5 @@ cp vimrc/.vimrc ~/
 
 ### Ubuntu
 ```bash
-sudo apt install mypy flake8
+sudo apt install mypy flake8 vim-python-jedi
 ```
