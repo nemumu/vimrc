@@ -73,7 +73,7 @@ endif
 "==================================
 " Defx
 call defx#custom#option('_', {
-    \ 'winwidth': 30,
+    \ 'winwidth': 25,
     \ 'split': 'vertical',
     \ 'direction': 'topleft',
     \ 'show_ignored_files': 1,
@@ -85,7 +85,10 @@ call defx#custom#option('_', {
 autocmd FileType defx call s:defx_settings()
 function! s:defx_settings() abort
     " Open
-    nnoremap <silent><buffer><expr> <CR> defx#do_action('open')
+    nnoremap <silent><buffer><expr> <CR> defx#do_action('drop')
+
+    " Open new tab
+    nnoremap <silent><buffer><expr> t defx#do_action('open','tabnew')
 
     " Open or Close dir
     nnoremap <silent><buffer><expr> <Space> defx#do_action('open_or_close_tree')
