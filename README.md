@@ -26,5 +26,5 @@ sudo apt install mypy flake8 vim-python-jedi
 #### Neovim
 ```bash
 sudo apt install fzf ripgrep silversearcher-ag
-pip3 install pyright
+pip3 install pyright pynvim
 ```
