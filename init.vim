@@ -336,6 +336,10 @@ nnoremap sH : <C-w>H
 " Close window
 nnoremap sq :  <C-u>q<CR>
 
+" == Other ==
+" Short selection
+nnoremap s[ <C-v>
+
 " == Change mode ==
 " Ctrl+h to ESC
 imap <C-h> <esc>
