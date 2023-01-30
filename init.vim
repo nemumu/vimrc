@@ -392,3 +392,6 @@ nnoremap sr : <C-u>Rg<CR>
 
 " fs to Files(fzf) search
 nnoremap fs : <C-u>Files<CR>
+
+" Override mouse options
+set mouse=
