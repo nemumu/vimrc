@@ -37,5 +37,5 @@ vim.keymap.set('n', 'sx', "<cmd>lua require('telescope.builtin').find_files()<CR
 vim.keymap.set('n', 'sb', "<cmd>lua require('telescope.builtin').buffers()<CR>")
 
 -- sg to format
-vim.keymap.set('n', 'sg', '<cmd>lua vim.lsp.buf.formatting()<CR>')
+vim.keymap.set('n', 'sg', '<cmd>lua vim.lsp.buf.format { async = true }<CR>')
 
