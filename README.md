@@ -25,6 +25,13 @@ sudo apt install mypy flake8 vim-python-jedi
 
 #### Neovim
 ```bash
-sudo apt install fzf ripgrep silversearcher-ag
-pip3 install pyright pynvim
+pip3 install pyright "python-lsp-server[all]" python-lsp-black pyls-isort
+
+# Install latest Node.js (https://github.com/nodesource/distributions)
+curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - &&\
+sudo apt-get install -y nodejs npm ripgrep
+
+npm i -g vscode-langservers-extracted
+npm i -g @ansible/ansible-language-server
+npm i -g bash-language-server
 ```
