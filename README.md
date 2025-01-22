@@ -5,13 +5,13 @@ This is my init.lua
 - Ubuntu 24.04
 
 ## Installation
+Set nvim
 ```bash
 git clone git://github.com/nemumu/vimrc.git
 cp -r vimrc/nvim ~/.config/nvim/
 ```
 
-### Ubuntu
-#### Neovim
+Install dependency
 ```bash
 sudo apt install -y gcc fzf cmake ripgrep
 
