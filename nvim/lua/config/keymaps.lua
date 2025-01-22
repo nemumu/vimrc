@@ -22,7 +22,7 @@ vim.api.nvim_set_keymap('n', 'sq', ':q<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', 'sw', ':w<CR>', { noremap = true })
 
 -- sz to terminal
-vim.api.nvim_set_keymap('n', 'sz', ':ToggleTerm size=90 direction=vertical<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', 'sz', ':ToggleTerm size=90 direction=float<CR>', { noremap = true })
 
 -- st to open filter
 vim.api.nvim_set_keymap('n', 'ff', ':NvimTreeOpen<CR>', { noremap = true, silent = true })
@@ -36,6 +36,8 @@ vim.keymap.set('n', 'sx', "<cmd>lua require('telescope.builtin').find_files()<CR
 -- sb to Telescope buffers
 vim.keymap.set('n', 'sb', "<cmd>lua require('telescope.builtin').buffers()<CR>")
 
+-- sm to Trouble
+vim.keymap.set('n', 'sm', "<cmd>Trouble diagnostics toggle<CR>")
+
 -- sg to format
 vim.keymap.set('n', 'sg', '<cmd>lua vim.lsp.buf.format { async = true }<CR>')
-

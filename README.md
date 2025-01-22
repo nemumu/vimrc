@@ -1,35 +1,21 @@
 # .vimrc
-This is my init.lua and .vimrc
+This is my init.lua
 
 ## Supporting OS/dist
-- Ubuntu 22.04
+- Ubuntu 24.04
 
 ## Installation
 ```bash
 git clone git://github.com/nemumu/vimrc.git
-
-# Vim
-cp vimrc/.vimrc ~/
-
-# Neovim
-cp vimrc/nvim ~/.config/nvim/
+cp -r vimrc/nvim ~/.config/nvim/
 ```
 
 ### Ubuntu
 #### Neovim
 ```bash
-pip3 install pyright "python-lsp-server[all]" python-lsp-black pyls-isort
+sudo apt install -y gcc fzf cmake ripgrep
 
 # Install latest Node.js (https://github.com/nodesource/distributions)
-curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash - &&\
-  sudo apt-get install -y nodejs npm ripgrep
-
-npm i -g vscode-langservers-extracted
-npm i -g @ansible/ansible-language-server
-npm i -g bash-language-server
-```
-
-#### vim (deprecated)
-```bash
-sudo apt install mypy flake8 vim-python-jedi
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash -
+sudo apt-get install -y nodejs
 ```
